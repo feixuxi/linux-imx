@@ -272,6 +272,23 @@
 	};
 };
 
+&i2c4 {
+	clock-frequency = <100000>;
+	pinctrl-names = "default";
+	pinctrl-0 = <&pinctrl_i2c4>;
+	status = "okay";
+
+	usb-hub@2c {
+		pinctrl-names = "default";
+		pinctrl-0 = <&pinctrl_usb_hub>;
+		compatible = "microchip,usb2513bi";
+		reg = <0x2c>;
+		individual-port-switching;
+		reset-gpios = <&gpio1 22 GPIO_ACTIVE_LOW>;
+		self-powered;
+	};
+};
+
 &lcdif {
 	assigned-clocks = <&clks IMX6UL_CLK_LCDIF_PRE_SEL>;
 	assigned-clock-parents = <&clks IMX6UL_CLK_PLL5_VIDEO_DIV>;
@@ -527,6 +544,13 @@
 		>;
 	};
 
+	pinctrl_i2c4: i2c4grp {
+		fsl,pins = <
+			MX6UL_PAD_ENET2_RX_EN__I2C4_SCL 0x4001b8b0
+			MX6UL_PAD_ENET2_TX_DATA0__I2C4_SDA 0x4001b8b0
+		>;
+	};
+
 	pinctrl_lcdif_dat: lcdifdatgrp {
 		fsl,pins = <
 			MX6UL_PAD_LCD_DATA00__LCDIF_DATA00  0x79
@@ -757,6 +781,13 @@
 	pinctrl_wdog: wdoggrp {
 		fsl,pins = <
 			MX6UL_PAD_LCD_RESET__WDOG1_WDOG_ANY    0x30b0
+		>;
+	};
+
+	pinctrl_usb_hub: usb-hub-grp {
+		fsl,pins = <
+			/* USBHUB_RESET# */
+			MX6UL_PAD_UART2_CTS_B__GPIO1_IO22		0x100b1
 		>;
 	};
 };
