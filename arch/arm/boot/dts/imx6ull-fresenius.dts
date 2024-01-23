@@ -51,10 +51,6 @@
 		regulator-name = "WIFI_3V3";
 		regulator-min-microvolt = <3300000>;
 		regulator-max-microvolt = <3300000>;
-		pinctrl-names = "default";
-		pinctrl-0 = <&pinctrl_wifi_3v3_reg>;
-		gpio = <&gpio3 2 0>;
-		enable-active-high;
 		regulator-always-on;
 	};
 
@@ -376,12 +372,6 @@
 	pinctrl_usbhub: usbhub {
 		fsl,pins = <
 			MX6UL_PAD_UART2_CTS_B__GPIO1_IO22	0x90b0
-		>;
-	};
-
-	pinctrl_wifi_3v3_reg: wifireg {
-		fsl,pins = <
-			MX6UL_PAD_LCD_HSYNC__GPIO3_IO02		0x90b0
 		>;
 	};
 };
