@@ -33,17 +33,6 @@
 		};
 	};
 
-	leds {
-		compatible = "gpio-leds";
-		pinctrl-names = "default";
-		pinctrl-0 = <&pinctrl_gpio_leds>;
-
-		led {
-			label = "gpio-led";
-			gpios = <&gpio3 2 GPIO_ACTIVE_HIGH>;
-		};
-	};
-	
 	gpio-keys {
 		compatible = "gpio-keys";
 		#address-cells = <1>;
@@ -62,6 +51,10 @@
 		regulator-name = "WIFI_3V3";
 		regulator-min-microvolt = <3300000>;
 		regulator-max-microvolt = <3300000>;
+		pinctrl-names = "default";
+		pinctrl-0 = <&pinctrl_wifi_3v3_reg>;
+		gpio = <&gpio3 2 0>;
+		enable-active-high;
 		regulator-always-on;
 	};
 
@@ -386,7 +379,7 @@
 		>;
 	};
 
-	pinctrl_gpio_leds: gpioledsgrp {
+	pinctrl_wifi_3v3_reg: wifireg {
 		fsl,pins = <
 			MX6UL_PAD_LCD_HSYNC__GPIO3_IO02		0x90b0
 		>;
