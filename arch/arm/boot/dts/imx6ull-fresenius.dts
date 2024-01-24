@@ -51,9 +51,6 @@
 		regulator-name = "WIFI_3V3";
 		regulator-min-microvolt = <3300000>;
 		regulator-max-microvolt = <3300000>;
-		pinctrl-names = "default";
-		pinctrl-0 = <&pinctrl_wifi_3v3_reg>;
-		gpio = <&gpio3 2 0>;
 		enable-active-high;
 		regulator-always-on;
 	};
@@ -462,15 +459,6 @@
 		#address-cells = <1>;
 		#size-cells = <0>;
 		reg = <1>;
-
-		wifi@2{
-			status = "okay";
-			pinctrl-names = "default";
-			pinctrl-0 = <&pinctrl_wifibt>;
-			compatible = "usb1286,204e";
-			reg = <2>;
-			reset-gpios = <&gpio1 25 GPIO_ACTIVE_LOW>;
-		};
 	};
 };
 
